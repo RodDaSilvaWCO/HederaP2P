@@ -1,0 +1,64 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <Copyright>Copyright © The World Computer Organization</Copyright>
+    <PackageProjectUrl>http://www.WorldComputer.org</PackageProjectUrl>
+    <Authors>The World Computer Organization</Authors>
+    <Product>WorldComputer</Product>
+    <SignAssembly>False</SignAssembly>
+    <AssemblyOriginatorKeyFile>C:\WorldComputer\WorldComputer\WorldComputer.snk</AssemblyOriginatorKeyFile>
+    <AssemblyName>WCSim</AssemblyName>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="BlockDevice.cs" />
+    <Compile Remove="BlockManager.cs" />
+    <Compile Remove="CacheManager.cs" />
+    <Compile Remove="CloudCommandContext.cs" />
+    <Compile Remove="IOManager.cs" />
+    <Compile Remove="Properties\AssemblyInfo.cs" />
+    <Compile Remove="WCSim.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\WorldComputer\WorldComputer.snk" Link="WorldComputer.snk" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="8.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.4" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="8.0.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.5.1" />
+    <PackageReference Include="IdentityModel" Version="7.0.0" /> 
+    <PackageReference Include="callback.CBFSConnect" Version="24.0.8980" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <None Update="appSettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="copy /Y &quot;$(TargetDir)$(TargetName).dll&quot; &quot;C:\WorldComputer\WorldComputer\WorldComputer.NodeDebug\bin\Debug\win-x64\$(TargetName).dll&quot;;&#xD;&#xA;copy /Y &quot;$(TargetDir)$(TargetName).dll&quot; &quot;C:\WorldComputer\WorldComputer\WorldComputer.Node\bin\Debug\win-x64\$(TargetName).dll&quot;;&#xD;&#xA;copy /Y &quot;$(TargetDir)$(TargetName).dll&quot; &quot;C:\WorldComputer\Output\$(TargetName).dll&quot;;&#xD;&#xA;copy /Y &quot;$(TargetDir)$(TargetName).exe&quot; &quot;C:\WorldComputer\WorldComputer\WorldComputer.NodeDebug\bin\Debug\win-x64\$(TargetName).exe&quot;;&#xD;&#xA;copy /Y &quot;$(TargetDir)$(TargetName).exe&quot; &quot;C:\WorldComputer\WorldComputer\WorldComputer.Node\bin\Debug\win-x64\$(TargetName).exe&quot;;&#xD;&#xA;copy /Y &quot;$(TargetDir)$(TargetName).exe&quot; &quot;C:\WorldComputer\Output\$(TargetName).exe&quot;;&#xD;&#xA;copy /Y &quot;$(TargetDir)appSettings.json&quot; &quot;C:\WorldComputer\WorldComputer\WorldComputer.NodeDebug\bin\Debug\win-x64\appSettings.json&quot;;&#xD;&#xA;copy /Y &quot;$(TargetDir)appSettings.json&quot; &quot;C:\WorldComputer\WorldComputer\WorldComputer.Node\bin\Debug\win-x64\appSettings.json&quot;;&#xD;&#xA;copy /Y &quot;$(TargetDir)appSettings.json&quot; &quot;C:\WorldComputer\Output\appSettings.json&quot;;&#xD;&#xA;&#xD;&#xA;copy /Y &quot;$(TargetDir)callback.CBFSConnect.dll&quot; &quot;C:\WorldComputer\WorldComputer\WorldComputer.NodeDebug\bin\Debug\win-x64\&quot;;&#xD;&#xA;copy /Y &quot;$(TargetDir)callback.CBFSConnect.dll&quot; &quot;C:\WorldComputer\WorldComputer\WorldComputer.Node\bin\Debug\win-x64\&quot;;&#xD;&#xA;copy /Y &quot;$(TargetDir)callback.CBFSConnect.dll&quot; &quot;C:\WorldComputer\Output\&quot;;&#xD;&#xA;copy /Y &quot;C:\WorldComputer\CBFS Connect 2024 .NET Edition\drivers\cbfs.cab&quot; &quot;C:\WorldComputer\WorldComputer\WorldComputer.NodeDebug\bin\Debug\win-x64\&quot;;&#xD;&#xA;copy /Y &quot;C:\WorldComputer\CBFS Connect 2024 .NET Edition\drivers\cbfs.cab&quot; &quot;C:\WorldComputer\WorldComputer\WorldComputer.Node\bin\Debug\win-x64\&quot;;&#xD;&#xA;copy /Y &quot;C:\WorldComputer\CBFS Connect 2024 .NET Edition\drivers\cbfs.cab&quot; &quot;C:\WorldComputer\Output\&quot;;" />
+  </Target>
+
+</Project>

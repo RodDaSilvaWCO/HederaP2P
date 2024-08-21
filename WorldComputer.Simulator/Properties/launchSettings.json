@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "WorldComputer.Simulator": {
+      "commandName": "Project",
+      "commandLineArgs": "N /CREATE:1"
+    }
+  }
+}
